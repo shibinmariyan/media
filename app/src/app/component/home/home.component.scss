@@ -1,0 +1,12 @@
+.player__video {
+  width        : 100%;
+  margin       : 0 auto;
+  object-fit   : contain;
+  max-height   : 320px;
+  border-radius: 2%;
+
+  @media only screen and (max-width: 767px) {
+    max-height: 45%;
+    margin    : 0 auto;
+  }
+}

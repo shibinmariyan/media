@@ -1,0 +1,76 @@
+<div class="d-flex main-content">
+    <div class="card mx-auto w-50 mt-5" style="width: 18rem;">
+        <div class="card-header d-flex">
+            <div class="col float-left mt-3">
+                <label for="Name">Name</label>
+                <h2>{{userFullName}} </h2>
+            </div>
+            <div class="content">
+                <div class="content-overlay"></div>
+                <img class="content-image" src="./assets/img/avatar.png">
+                <div class="content-details fadeIn-bottom">
+                    <h3 class="content-title"(click)="selectImg()" >Upload</h3>
+                </div>
+            </div>
+        </div>
+        <table class="table table-responsive">
+            <tbody>
+                <tr>
+                    <td>FirstName
+                    </td>
+                    <td>{{firstName}}</td>
+                </tr>
+                <tr>
+                    <td>lastName
+                    </td>
+                    <td>{{lastName}}</td>
+                </tr>
+                <tr>
+                    <td>Email
+                    </td>
+                    <td>{{email}}</td>
+                </tr>
+                <tr>
+                    <td>RoleType
+                    </td>
+                    <td>{{roleType}}</td>
+                </tr>
+                <tr>
+                    <td>Number of Videos Upload
+                    </td>
+                    <td>{{noOfVideos}}</td>
+                </tr>
+                <tr>
+                    <td>joiningDate
+                    </td>
+                    <td>{{joiningDate}}</td>
+                </tr>
+            <tbody>
+        </table>
+        <div class="card-footer bg-white border-0">
+            <a class="btn btn-primary float-left" type="button" href="javascript:history.back()">Back</a>
+        </div>
+    </div>
+    <div class="card mt-5 mx-auto sidelist" style="width: 18rem;">
+        <div class="card-header bg-primary text-white">
+            <p class="text-center text-bold">Videos you currently stored</p>
+        </div>
+        <div class="card-body" *ngIf="noData">
+            <p>Sorry No Data found</p>
+        </div>
+        <table class="w-100 table table-responsive" *ngIf="!noData">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>File Size</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let vdo of vdos">
+                    <td>{{vdo.caption}}</td>
+                    <td>{{vdo.size}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

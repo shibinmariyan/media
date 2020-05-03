@@ -1,0 +1,44 @@
+<div class="container m-2 mx-auto">
+    <div *ngIf="validvideos;else notfound">
+        <div *ngIf="playeractive; else videoList">
+            <div class="row">
+                <video class="player__video border border-primary" preload="auto" poster="../../../assets/img/logo.png"
+                    controls autoplay [src]="videoPath">
+                </video>
+            </div>
+            <div class="row mt-2">
+                <div class="card m-1" *ngFor="let video of videos">
+                    <div class="card-header">
+                        <h2>{{video.caption}}</h2>
+                    </div>
+                    <div class="card-body">
+                        <img [src]="video.thumbnail" [alt]="video.caption" class="img-fluid">
+                        <p></p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="col btn btn-primary" (click)="nvgte(video.path)">WatchNow</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ng-template #videoList>
+            <div class="row">
+                <div class="card m-1" *ngFor="let video of videos">
+                    <div class="card-header">
+                        <h2>{{video.caption}}</h2>
+                    </div>
+                    <div class="card-body">
+                        <img [src]="video.thumbnail" [alt]="video.caption" class="img-fluid">
+                    </div>
+                    <div class="card-footer">
+                        <button class="col btn btn-primary" (click)="nvgte(video.path)">WatchNow</button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+    <ng-template #notfound>
+        <p>No video Found</p>
+    </ng-template>
+</div>

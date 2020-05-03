@@ -1,0 +1,63 @@
+
+  <div style="height: 85vh;" *ngIf="validtoken;else loginpage">
+    <mat-toolbar class="navbar-light bg-primary text-white menu-spacer col">
+        <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span class="col float-left">
+                <img src="./assets/img/logo.png" class="imge img-fluid">
+                <mat-card-title class="text-white m-1">MediaBar</mat-card-title>
+            </span>
+            <span class="example-spacer"></span>
+        <div fxShow="true" fxHide.lt-md="true" class="float-right">
+            <!-- <a href="#" mat-button>Collection</a> -->
+            <button mat-button [matMenuTriggerFor]="menu">Videos
+                <mat-icon>keyboard_arrow_down</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+                <a href="#" mat-menu-item>Manage Videos</a>
+                <button mat-menu-item (click)="upload()"> Upload New</button>
+            </mat-menu>
+            <button mat-button [matMenuTriggerFor]="profile">
+                <img id="profile" class="imge img-fluid" [src]="userImg" [alt]="userName">
+                {{userName}}<mat-icon>keyboard_arrow_down</mat-icon>
+            </button>
+            <mat-menu #profile="matMenu" xPosition="before">
+                <a href="/profile" mat-menu-item>Profile</a>
+                <button mat-menu-item (click)="LogOut()"> LogOut</button>
+            </mat-menu>
+
+        </div>
+    </mat-toolbar>
+
+    <mat-sidenav-container fxFlexFill class="example-container">
+        <mat-sidenav #sidenav fxLayout="column">
+            <div fxLayout="column">
+                <a (click)="sidenav.toggle()" href="#" mat-button>Close</a>
+                <button mat-button [matMenuTriggerFor]="menu">Videos
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu" xPosition="before">
+                    <a href="#" mat-menu-item>Manage Videos</a>
+                    <button mat-menu-item (click)="upload()"> Upload New</button>
+                </mat-menu>
+                <button mat-button [matMenuTriggerFor]="profile">
+                    <img id="profile" class="imge img-fluid" [src]="userImg" [alt]="userName">
+                    {{userName}}<mat-icon>keyboard_arrow_down</mat-icon>
+                </button>
+                <mat-menu #profile="matMenu" xPosition="before">
+                    <a href="/profile" mat-menu-item>Profile</a>
+                    <button mat-menu-item (click)="LogOut()"> LogOut</button>
+                </mat-menu>
+            </div>
+        </mat-sidenav>
+        <mat-sidenav-content fxFlexFill>
+  <router-outlet></router-outlet>
+         
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
+
+<ng-template #loginpage>
+  <app-login></app-login>
+</ng-template>
